@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASW Ethical Decision Making Module</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Layout */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 10px; }
+        h3 { color: var(--secondary); margin-top: 1.5rem; }
+
+        /* Scenarios */
+        .scenario-card {
+            border: 1px solid #ddd;
+            border-left: 5px solid var(--secondary);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #fdfdfd;
+        }
+        .twist-box {
+            display: none; /* Hidden by default */
+            background-color: #ffe6e6;
+            border: 1px solid var(--accent);
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .btn-twist {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        /* Quiz Styles */
+        .quiz-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        .options label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct { background-color: #d4edda; color: #155724; }
+        .incorrect { background-color: #f8d7da; color: #721c24; }
+
+        /* Facilitator Section (Collapsible) */
+        details {
+            background: #eef2f3;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            margin-top: 2rem;
+        }
+        
+        @media print {
+            nav, .btn-twist, #quiz-section { display: none; }
+            .twist-box { display: block; border: 1px solid black; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#scenarios">Simulation & Scenarios</a></li>
+        <li><a href="#cheatsheet">Cheat Sheet</a></li>
+        <li><a href="#homework">Homework</a></li>
+        <li><a href="#quiz-section">Interactive Quiz</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>The Ethical Review Board Simulation</h1>
+    <p>Interactive Module for Social Work Ethics (NASW Code)</p>
+</header>
+
+<div class="container">
+
+    <section id="overview">
+        <h2>Instructions</h2>
+        <p><strong>Role:</strong> You are members of the State Ethical Review Board.</p>
+        <p><strong>Task:</strong> Review the assigned complaint/consultation. You must issue a formal ruling citing specific NASW Ethical Standards.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+            <li>Review your assigned scenario below.</li>
+            <li>Complete the "Ethical Matrix" (Identifying conflicts, codes, and values).</li>
+            <li>Wait for the instructor to reveal the "Wildcard Twist."</li>
+            <li>Adjust your ruling based on the new information.</li>
+        </ol>
+    </section>
+
+    <section id="scenarios">
+        <h2>The Scenarios</h2>
+        
+        <div class="scenario-card">
+            <h3>Scenario A: The "Small Town" Struggle</h3>
+            <p><strong>Premise:</strong> You are a social worker in a rural community (only provider for 30 miles). Your new client, in crisis over a divorce, is your daughter's soccer coach. If you refer him out, he likely won't receive care due to distance.</p>
+            <p><em>Key Codes to Consider: 1.06 (Conflict of Interest), 6.04 (Access to Care).</em></p>
+            
+            <button class="btn-twist" onclick="toggleTwist('twistA')">Reveal The Twist</button>
+            <div id="twistA" class="twist-box">
+                <strong>⚠️ THE TWIST:</strong> The client reveals during the first session that he has "anger issues" involving parents of the children he coaches.
+                <hr>
+                <p><em>Impact: Does this change your ability to remain objective? Is referral now mandatory regardless of distance?</em></p>
+            </div>
+        </div>
+
+        <div class="scenario-card">
+            <h3>Scenario B: The Colleague's Secret</h3>
+            <p><strong>Premise:</strong> You notice your mentor, Sarah, often smells of alcohol after lunch. She asks you not to tell the supervisor, claiming she is going through a divorce and "has it under control."</p>
+            <p><em>Key Codes to Consider: 2.09 (Impairment), 2.08 (Taking Action).</em></p>
+
+            <button class="btn-twist" onclick="toggleTwist('twistB')">Reveal The Twist</button>
+            <div id="twistB" class="twist-box">
+                <strong>⚠️ THE TWIST:</strong> You discover Sarah made a charting error yesterday that resulted in a patient receiving the wrong discharge instructions (potential harm).
+                <hr>
+                <p><em>Impact: Has the threshold moved from "Consultation" to "Duty to Report"?</em></p>
+            </div>
+        </div>
+
+        <div class="scenario-card">
+            <h3>Scenario C: The Digital Dilemma</h3>
+            <p><strong>Premise:</strong> A former client sends a friend request with a message: "I'm doing great! Look at my new baby." You are tempted to accept to validate their progress.</p>
+            <p><em>Key Codes to Consider: 1.06 (Conflicts), 1.07 (Privacy).</em></p>
+
+            <button class="btn-twist" onclick="toggleTwist('twistC')">Reveal The Twist</button>
+            <div id="twistC" class="twist-box">
+                <strong>⚠️ THE TWIST:</strong> You check the client's public profile and see a post threatening self-harm, posted 10 minutes ago.
+                <hr>
+                <p><em>Impact: You "crossed a boundary" to see the post, but now have life-saving information. What is your duty now?</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="facilitator">
+        <details>
+            <summary>🔒 Instructor / Facilitator Guide (Click to Expand)</summary>
+            <h3>Debriefing Points</h3>
+            <ul>
+                <li><strong>Scenario A (Rural):</strong> Before the twist, we manage the dual relationship. After the twist (anger at parents), objectivity is compromised. 1.06(c) requires action to minimize conflict; referral is likely mandatory now.</li>
+                <li><strong>Scenario B (Impairment):</strong> Before the twist, we talk to the colleague (2.09). After the twist (patient harm), we must prioritize client safety over colleague loyalty. Reporting to administration is now required.</li>
+                <li><strong>Scenario C (Digital):</strong> Before the twist, accepting is a boundary violation. After the twist, 1.07(c) applies: Privacy can be breached to prevent "serious, foreseeable, and imminent harm." Call 911/Welfare check.</li>
+            </ul>
+        </details>
+    </section>
+
+    <section id="cheatsheet">
+        <h2>📋 The "Real Talk" Ethics Cheat Sheet</h2>
+        <p><strong>The 6 Core Values Mnemonic:</strong> "Service Scares Dogs, Ignites Cats' Curiosity"</p>
+        <ul>
+            <li>Service, Social Justice, Dignity & Worth, Integrity, Competence, Human Relationships.</li>
+        </ul>
+
+        <h3>Top Cited Standards</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>"Real Talk" Translation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.01</td>
+                    <td>Commitment to Clients</td>
+                    <td><strong>Client First.</strong> Loyalty is to the client (unless they will hurt someone).</td>
+                </tr>
+                <tr>
+                    <td>1.02</td>
+                    <td>Self-Determination</td>
+                    <td><strong>Their Choice.</strong> They can make bad decisions if they aren't dangerous.</td>
+                </tr>
+                <tr>
+                    <td>1.06</td>
+                    <td>Conflicts of Interest</td>
+                    <td><strong>Stay in Your Lane.</strong> Don't treat family, friends, or exes.</td>
+                </tr>
+                <tr>
+                    <td>1.07</td>
+                    <td>Privacy & Confidentiality</td>
+                    <td><strong>The Vault.</strong> Exceptions: Danger to self/others, abuse, court order.</td>
+                </tr>
+                <tr>
+                    <td>2.09</td>
+                    <td>Impairment of Colleagues</td>
+                    <td><strong>The Intervention.</strong> Talk to them first. If patients are at risk, tell the boss.</td>
+                </tr>
+                <tr>
+                    <td>4.03</td>
+                    <td>Private Conduct</td>
+                    <td><strong>The Grocery Store Test.</strong> Don't let personal life mess up professional image.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="quiz-section">
+        <h2>📝 Interactive Knowledge Check</h2>
+        <div id="quiz-container">
+            </div>
+        <button onclick="calculateScore()" style="background:var(--primary); color:white; padding:10px 20px; border:none; border-radius:5px; margin-top:20px; cursor:pointer; font-size:1.1rem;">Check Answers</button>
+        <div id="score-display" style="margin-top:20px; font-weight:bold; font-size:1.2rem;"></div>
+    </section>
+
+    <section id="homework">
+        <h2>Homework: "The Mirror & The Code"</h2>
+        <p><strong>Assignment:</strong> Write a 1-2 page reflection paper using Gibbs' Reflective Cycle.</p>
+        <h3>Prompts:</h3>
+        <ul>
+            <li><strong>The Internal Tug-of-War:</strong> How did your personal values (gut reaction) conflict with the Code during the "Twist"?</li>
+            <li><strong>The Code in Action:</strong> Cite one standard that was difficult to apply. Why?</li>
+            <li><strong>Future Practice:</strong> Identify a personal value you must manage to avoid ethical blind spots.</li>
+        </ul>
+    </section>
+
+</div>
+
+<footer>
+    <p>Designed for Social Work Education | Based on NASW Code of Ethics</p>
+</footer>
+
+<script>
+    // --- TWIST REVEAL LOGIC ---
+    function toggleTwist(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+
+    // --- QUIZ DATA & LOGIC ---
+    const quizData = [
+        {
+            q: "1. Which Core Value is the '#1 goal' of helping people in need?",
+            options: ["Integrity", "Service", "Competence", "Social Justice"],
+            correct: 1,
+            rationale: "Service explicitly identifies helping people in need as the primary goal."
+        },
+        {
+            q: "2. A client wants to quit their job to become a street artist (bad financial idea). Which code allows this?",
+            options: ["1.01 Commitment", "1.14 Capacity", "1.02 Self-Determination", "1.06 Conflicts"],
+            correct: 2,
+            rationale: "Self-Determination allows clients to make their own choices, even 'bad' ones, if not dangerous."
+        },
+        {
+            q: "3. You find out your new client is your mail carrier. What is the main ethical issue?",
+            options: ["Inconvenience", "Conflict of Interest (Dual Relationship)", "Privacy Breach", "Informed Consent"],
+            correct: 1,
+            rationale: "This creates a dual relationship that could impair judgment (Standard 1.06)."
+        },
+        {
+            q: "4. When MUST you break confidentiality?",
+            options: ["Client shoplifted candy", "Spouse asks for update", "Suspected child abuse", "Client isn't progressing"],
+            correct: 2,
+            rationale: "Mandated reporting laws for child abuse supersede confidentiality."
+        },
+        {
+            q: "5. A colleague smells of alcohol. What is generally the FIRST step (per 2.09)?",
+            options: ["Report to Board", "Ignore it", "Talk to colleague directly", "Call Police"],
+            correct: 2,
+            rationale: "Consult with the colleague directly first, unless clients are in immediate danger."
+        },
+        {
+            q: "6. Standard 4.03 (Private Conduct) is best summarized as:",
+            options: ["The Grocery Store Test", "The Hug Rule", "The Hard No", "Clean Hands Doctrine"],
+            correct: 0,
+            rationale: "Your personal behavior creates a professional image."
+        },
+        {
+            q: "7. You receive a subpoena from a lawyer. You should:",
+            options: ["Send files immediately", "Assert Privilege & seek counsel", "Hide the client", "Post about it"],
+            correct: 1,
+            rationale: "A subpoena is not a court order; you must protect confidentiality first."
+        },
+        {
+            q: "8. Standard 1.09 prohibits sex with clients AND:",
+            options: ["Neighbors", "Client's relatives/close contacts", "Zip code residents", "Former classmates"],
+            correct: 1,
+            rationale: "The ban extends to relatives or close personal contacts of the client."
+        },
+        {
+            q: "9. The 'Tarasoff' duty is:",
+            options: ["Duty to Report Abuse", "Duty to Record Keep", "Duty to Warn/Protect", "Duty to Pro Bono"],
+            correct: 2,
+            rationale: "Tarasoff established the Duty to Warn/Protect third parties from imminent harm."
+        },
+        {
+            q: "10. You watched one YouTube video on a therapy technique. Can you use it?",
+            options: ["Yes, immediately", "No, need training/supervision", "Never", "If client teaches you"],
+            correct: 1,
+            rationale: "Standard 1.04 requires you to practice only within your boundaries of competence."
+        }
+    ];
+
+    function loadQuiz() {
+        const container = document.getElementById('quiz-container');
+        let html = '';
+        quizData.forEach((item, index) => {
+            html += `<div class="quiz-question" id="q${index}">
+                <p><strong>${item.q}</strong></p>
+                <div class="options">`;
+            item.options.forEach((opt, i) => {
+                html += `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`;
+            });
+            html += `</div>
+                <div class="feedback" id="feedback${index}"></div>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function calculateScore() {
+        let score = 0;
+        quizData.forEach((item, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            const feedback = document.getElementById(`feedback${index}`);
+            
+            if (selected) {
+                if (parseInt(selected.value) === item.correct) {
+                    score++;
+                    feedback.className = "feedback correct";
+                    feedback.innerHTML = "✅ Correct! " + item.rationale;
+                } else {
+                    feedback.className = "feedback incorrect";
+                    feedback.innerHTML = "❌ Incorrect. " + item.rationale;
+                }
+                feedback.style.display = "block";
+            } else {
+                feedback.className = "feedback incorrect";
+                feedback.innerHTML = "⚠️ Please select an answer.";
+                feedback.style.display = "block";
+            }
+        });
+        document.getElementById('score-display').innerText = `You scored ${score} out of ${quizData.length}`;
+    }
+
+    // Initialize Quiz on Load
+    window.onload = loadQuiz;
+</script>
+
+</body>
+</html>
