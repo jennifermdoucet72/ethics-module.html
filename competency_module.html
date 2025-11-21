@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competency & Ethics Crosswalk</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        :root {
+            --primary: #003366; /* University Blue */
+            --accent: #D4AF37; /* Academic Gold */
+            --light: #f4f4f4;
+            --text: #333;
+            --comp1: #3498db;
+            --comp6: #e67e22;
+            --comp8: #27ae60;
+            --comp10: #9b59b6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-top: 40px; }
+        
+        /* --- INTERACTIVE CROSSWALK SECTION --- */
+        .crosswalk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .comp-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, border 0.2s;
+            border-top: 5px solid #ccc;
+        }
+
+        .comp-card:hover { transform: translateY(-5px); }
+        .comp-card.c1 { border-top-color: var(--comp1); }
+        .comp-card.c6 { border-top-color: var(--comp6); }
+        .comp-card.c8 { border-top-color: var(--comp8); }
+        .comp-card.c10 { border-top-color: var(--comp10); }
+
+        .card-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        
+        /* Detail View for Crosswalk */
+        #detail-view {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 10px solid var(--primary);
+            display: none; /* Hidden by default */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .ethics-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* --- COMPARISON TABLE --- */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        .row-highlight { background-color: #fffbf0; }
+
+        /* --- SIMULATION SECTION --- */
+        .sim-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .sim-stage { display: none; }
+        .sim-stage.active { display: block; }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        .btn-choice { background: var(--primary); color: white; }
+        .btn-choice:hover { background: #004a93; }
+        .btn-reset { background: var(--accent); color: black; }
+
+        .feedback-box {
+            background: #eef2f5;
+            padding: 15px;
+            border-left: 4px solid var(--accent);
+            margin-top: 15px;
+        }
+
+        /* --- CHART SECTION --- */
+        .chart-wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Integrated Practice: Ethics & Competencies</h1>
+    <p>Linking the NASW Code of Ethics to Competencies 1, 6, 8, and 10</p>
+</header>
+
+<div class="container">
+
+    <!-- SECTION 1: INTERACTIVE CROSSWALK -->
+    <h2>1. The Ethics-Competency Crosswalk</h2>
+    <p>Click a Competency Card below to reveal how specific NASW ethical standards drive the behaviors expected in the classroom and the field.</p>
+    
+    <div class="crosswalk-grid">
+        <!-- Comp 1 -->
+        <div class="comp-card c1" onclick="showDetail('c1')">
+            <span class="card-icon">⚖️</span>
+            <h3>Competency 1: Professional Behavior</h3>
+            <p>Self-regulation, demeanor, and oral/written communication.</p>
+        </div>
+
+        <!-- Comp 6 -->
+        <div class="comp-card c6" onclick="showDetail('c6')">
+            <span class="card-icon">🤝</span>
+            <h3>Competency 6: Engagement</h3>
+            <p>Empathy, reflection, and interpersonal skills with diverse clients.</p>
+        </div>
+
+        <!-- Comp 8 -->
+        <div class="comp-card c8" onclick="showDetail('c8')">
+            <span class="card-icon">🛠️</span>
+            <h3>Competency 8: Intervention</h3>
+            <p>Negotiate, mediate, advocate, and facilitate transitions.</p>
+        </div>
+
+        <!-- Comp 10 -->
+        <div class="comp-card c10" onclick="showDetail('c10')">
+            <span class="card-icon">🏙️</span>
+            <h3>Competency 10: Urban/Trauma</h3>
+            <p>Trauma-informed lens, family-centered, urban context dynamics.</p>
+        </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div id="detail-view">
+        <h3 id="detail-title">Select a Competency</h3>
+        <p id="detail-desc">...</p>
+        <h4>🔗 Connected NASW Ethical Standards:</h4>
+        <ul id="detail-ethics"></ul>
+        <div class="feedback-box">
+            <strong>💡 Classroom Application:</strong> <span id="detail-app"></span>
+        </div>
+    </div>
+
+    <!-- SECTION 2: COMPARISON CHART -->
+    <h2>2. Evolution of Practice: Student vs. Professional</h2>
+    <p>How does "demonstrating competency" look different in a classroom versus an urban field setting?</p>
+    
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Competency Area</th>
+                <th>Classroom Expectation (Student)</th>
+                <th>Field Expectation (Urban Context)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Comp 1: Self-Regulation</strong></td>
+                <td>Managing reactions to difficult readings or peer feedback without becoming defensive.</td>
+                <td>Maintaining composure when an urban client is in crisis or expressing anger at systemic failures.</td>
+            </tr>
+            <tr class="row-highlight">
+                <td><strong>Comp 1: Electronic Communication</strong></td>
+                <td>Writing professional emails to professors; respectful discussion board posts.</td>
+                <td>Documentation in medical records; Maintaining boundaries on social media (NASW 1.07).</td>
+            </tr>
+            <tr>
+                <td><strong>Comp 6: Empathy & Engagement</strong></td>
+                <td>Role-playing active listening; identifying bias in self-reflection papers.</td>
+                <td>Building trust with a family who has historical mistrust of systems (police/DCFS) due to trauma.</td>
+            </tr>
+            <tr class="row-highlight">
+                <td><strong>Comp 8: Inter-professional Collaboration</strong></td>
+                <td>Group projects; respecting diverse learning styles of peers.</td>
+                <td>Collaborating with lawyers, teachers, and doctors to coordinate care in a fragmented urban system.</td>
+            </tr>
+            <tr>
+                <td><strong>Comp 10: Trauma Lens</strong></td>
+                <td>Understanding ACEs (Adverse Childhood Experiences) theory.</td>
+                <td>Recognizing that a client's "resistance" may be a trauma response to the urban environment, not defiance.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 3: URBAN CONTEXT SIMULATION -->
+    <h2>3. Simulation: The eviction Notice</h2>
+    <p>Test your ability to integrate these competencies in a high-pressure Urban scenario.</p>
+
+    <div class="sim-container">
+        
+        <!-- Stage 1 -->
+        <div id="stage1" class="sim-stage active">
+            <h3>Scenario Setup</h3>
+            <p>You are an intern at an agency in a high-density urban housing complex. You are visiting the <strong>Martinez family</strong>. The father, Mr. Martinez, meets you at the door. He is visibly agitated, pacing, and yelling about an eviction notice he just received. He yells, "You social workers are all the same! You just want to take my kids!"</p>
+            <p><em>This situation triggers Competency 6 (Engagement) and Competency 10 (Trauma Lens).</em></p>
+            
+            <p><strong>How do you respond?</strong></p>
+            <button class="btn btn-choice" onclick="nextStage(2, 'A')">A. Firmly tell him to calm down so you can explain the paperwork.</button>
+            <button class="btn btn-choice" onclick="nextStage(2, 'B')">B. Use a calm voice, acknowledge his fear (Empathy), and stand at a non-threatening distance.</button>
+        </div>
+
+        <!-- Stage 2 -->
+        <div id="stage2" class="sim-stage">
+            <h3 id="s2-title">Outcome</h3>
+            <div id="s2-feedback" class="feedback-box"></div>
+            <br>
+            <p>Once the situation de-escalates, Mr. Martinez shows you the eviction notice. It is legally complex. You are a social work student, not a lawyer.</p>
+            <p><em>This triggers Competency 8 (Intervene/Collaborate) and Competency 1 (Professional boundaries/scope).</em></p>
+            
+            <p><strong>What is your intervention?</strong></p>
+            <button class="btn btn-choice" onclick="nextStage(3, 'A')">A. Try to interpret the law yourself to save the family money (Advocacy).</button>
+            <button class="btn btn-choice" onclick="nextStage(3, 'B')">B. Contact the Legal Aid partner agency for inter-professional collaboration.</button>
+        </div>
+
+        <!-- Stage 3 -->
+        <div id="stage3" class="sim-stage">
+            <h3>Final Outcome</h3>
+            <div id="s3-feedback" class="feedback-box"></div>
+            <br>
+            <button class="btn btn-reset" onclick="resetSim()">Restart Simulation</button>
+        </div>
+
+    </div>
+
+    <!-- SECTION 4: VISUALIZING THE INTERSECTION -->
+    <h2>4. Visualizing the Intersection</h2>
+    <p>The chart below visualizes how much each Competency relies on different Ethical realms.</p>
+    <div class="chart-wrapper">
+        <canvas id="competencyChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+    // --- CROSSWALK DATA ---
+    const data = {
+        c1: {
+            title: "Competency 1: Ethical & Professional Behavior",
+            desc: "Social workers must manage personal values and maintain professionalism in all communications (oral, written, electronic).",
+            ethics: [
+                "<strong>1.06 Conflicts of Interest:</strong> Managing boundaries in the classroom and field.",
+                "<strong>4.03 Private Conduct:</strong> Ensuring personal life does not interfere with professional role.",
+                "<strong>4.06 Misrepresentation:</strong> Clearly distinguishing between student role and licensed professional."
+            ],
+            app: "In the classroom, this means creating a 'psychologically safe' environment by respecting diverse viewpoints and managing your own emotional reactions to sensitive topics."
+        },
+        c6: {
+            title: "Competency 6: Engagement",
+            desc: "Using empathy and reflection to engage diverse clients, grounded in HBSE (Human Behavior in the Social Environment).",
+            ethics: [
+                "<strong>1.02 Self-Determination:</strong> Respecting the client's right to define their own goals during engagement.",
+                "<strong>1.05 Cultural Competence:</strong> Understanding the client's background to build rapport.",
+                "<strong>1.03 Informed Consent:</strong> Engaging clients clearly about the purpose of services."
+            ],
+            app: "Engagement isn't just 'being nice.' It is a clinical skill using active listening and the 'Person-in-Environment' framework to understand the client's unique context."
+        },
+        c8: {
+            title: "Competency 8: Intervention",
+            desc: "Choosing interventions, negotiating, mediating, and facilitating transitions.",
+            ethics: [
+                "<strong>1.04 Competence:</strong> Only using interventions you are trained in (or supervised for).",
+                "<strong>2.03 Interdisciplinary Collaboration:</strong> Working with other professionals (teachers, doctors) for client benefit.",
+                "<strong>1.16 Termination of Services:</strong> Facilitating effective endings and transitions."
+            ],
+            app: "Effective intervention requires critical thinking to select the right tool for the right problem, often involving advocacy within systems."
+        },
+        c10: {
+            title: "Competency 10: Trauma/Family/Urban",
+            desc: "Specific to the urban context: assessing complex dynamics and using a trauma-informed lens.",
+            ethics: [
+                "<strong>6.01 Social Welfare:</strong> Promoting the general welfare of society, specifically in urban environments.",
+                "<strong>1.01 Commitment to Clients:</strong> Prioritizing the family's well-being within complex urban systems.",
+                "<strong>Do No Harm (Core Value):</strong> Recognizing how systemic trauma impacts behavior."
+            ],
+            app: "In an urban context, a 'trauma-informed lens' means asking 'What happened to you?' instead of 'What is wrong with you?' when seeing difficult behaviors."
+        }
+    };
+
+    function showDetail(key) {
+        const view = document.getElementById('detail-view');
+        const info = data[key];
+        
+        document.getElementById('detail-title').innerText = info.title;
+        document.getElementById('detail-desc').innerText = info.desc;
+        
+        const list = document.getElementById('detail-ethics');
+        list.innerHTML = "";
+        info.ethics.forEach(e => {
+            let li = document.createElement('li');
+            li.innerHTML = "<span class='ethics-badge'>NASW</span> " + e;
+            list.appendChild(li);
+        });
+
+        document.getElementById('detail-app').innerText = info.app;
+        
+        view.style.display = 'block';
+        view.scrollIntoView({behavior: "smooth"});
+    }
+
+    // --- SIMULATION LOGIC ---
+    function nextStage(stageNum, choice) {
+        // Hide all stages
+        document.querySelectorAll('.sim-stage').forEach(el => el.classList.remove('active'));
+        
+        // Logic for transitions
+        if (stageNum === 2) {
+            document.getElementById('stage2').classList.add('active');
+            const feedback = document.getElementById('s2-feedback');
+            if (choice === 'A') {
+                feedback.innerHTML = "❌ <strong>Not Trauma-Informed.</strong> Demanding he calm down escalated the situation. He feels unheard. This violates <em>Competency 6 (Empathy)</em> and <em>Competency 10 (Trauma Lens)</em>.";
+                feedback.style.borderLeftColor = "red";
+            } else {
+                feedback.innerHTML = "✅ <strong>Excellent Engagement.</strong> By acknowledging his fear and giving space, you utilized a trauma-informed lens (Comp 10) and empathy (Comp 6). He calms down.";
+                feedback.style.borderLeftColor = "green";
+            }
+        } else if (stageNum === 3) {
+            document.getElementById('stage3').classList.add('active');
+            const feedback = document.getElementById('s3-feedback');
+            if (choice === 'A') {
+                feedback.innerHTML = "⚠️ <strong>Ethical Risk.</strong> While well-intentioned, trying to interpret complex housing law without a law degree violates <em>Competency 1 (Scope of Practice)</em> and NASW 1.04 (Competence). You risk giving bad legal advice.";
+                feedback.style.borderLeftColor = "orange";
+            } else {
+                feedback.innerHTML = "✅ <strong>Strong Intervention.</strong> This demonstrates <em>Competency 8 (Inter-professional Collaboration)</em>. You recognized your limits and brought in the right expert to advocate for the client.";
+                feedback.style.borderLeftColor = "green";
+            }
+        }
+    }
+
+    function resetSim() {
+        document.querySelectorAll('.sim-stage').forEach(el => el.classList.remove('active'));
+        document.getElementById('stage1').classList.add('active');
+    }
+
+    // --- CHART.JS RENDER ---
+    const ctx = document.getElementById('competencyChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: [
+                'Ethics (Comp 1)',
+                'Empathy/Engagement (Comp 6)',
+                'Intervention/Advocacy (Comp 8)',
+                'Trauma/Urban Context (Comp 10)',
+                'Collab/Teamwork (Comp 8)'
+            ],
+            datasets: [{
+                label: 'Integrated Practice Intensity',
+                data: [90, 85, 80, 95, 75],
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
+        },
+        options: {
+            elements: {
+                line: { borderWidth: 3 }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: false },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
