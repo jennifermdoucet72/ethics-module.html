@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASW Ethics Assessment</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the fillable areas */
+        textarea {
+            resize: vertical;
+            min-height: 8rem; /* Default minimum height for paragraphs */
+        }
+        /* Style for the case study sections to make them stand out */
+        .case-study-header {
+            border-left: 4px solid #10b981; /* Green border */
+            padding-left: 1rem;
+        }
+        /* Print styles - ensures the page looks good when printed */
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                font-size: 10pt;
+            }
+            .assessment-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+            /* Ensure textareas expand for printed answers */
+            textarea {
+                min-height: 5rem;
+                height: auto !important; /* Allow height to adjust to content */
+                border-bottom: 1px dashed #4b5563; /* Use a subtle line for printing */
+                border-top: none;
+                border-left: none;
+                border-right: none;
+            }
+            /* Hide the submit button and other unnecessary elements when printing */
+            .no-print {
+                display: none;
+            }
+            .question-block {
+                page-break-inside: avoid; /* Keep questions and their answer space together */
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans p-4 md:p-8">
+
+    <div class="assessment-container max-w-4xl mx-auto bg-white p-6 md:p-10 shadow-xl rounded-xl border border-gray-200">
+
+        <header class="text-center mb-8 border-b-2 pb-4">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-green-800 tracking-tight">NASW Code of Ethics Assessment</h1>
+            <p class="text-lg text-gray-600 mt-2">Short Essay and Case Study Application</p>
+        </header>
+
+        <!-- Student Info --><div class="mb-8 p-4 bg-green-50 rounded-lg flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
+            <div class="flex-1">
+                <label for="student-name" class="block text-sm font-medium text-gray-700 mb-1">Student Name:</label>
+                <input type="text" id="student-name" class="w-full border-b border-gray-400 p-1 focus:outline-none focus:border-green-500 bg-transparent" placeholder="Enter your full name">
+            </div>
+            <div class="flex-1">
+                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                <input type="date" id="date" class="w-full border-b border-gray-400 p-1 focus:outline-none focus:border-green-500 bg-transparent">
+            </div>
+        </div>
+
+        <!-- Part 1: Core Principles and Standards --><section class="mb-10">
+            <h2 class="text-2xl font-bold text-green-700 mb-6 border-b pb-2">Part 1: Core Principles and Standards</h2>
+
+            <!-- Question 1 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">1. Explain the NASW core value of "Service." How does this professional obligation differ from simply engaging in general philanthropy or volunteer work?</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 2 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">2. Describe two distinct ways a social worker can actively uphold the core value of "Social Justice" in their professional practice, particularly concerning vulnerable populations.</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 3 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">3. Standard 1.06 requires social workers to avoid exploitative dual relationships. Why is a social worker hiring a current client for home repair work considered a severe ethical violation, even if both parties consent?</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 4 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">4. Under what three specific conditions (regarding the threat) does the social worker's "Duty to Protect/Warn" legally and ethically override the client's right to confidentiality?</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 5 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">5. Define "Cultural Humility" and provide one example of how a social worker can demonstrate this approach when assessing a client from a cultural background unfamiliar to the worker.</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 6 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">6. What is "client abandonment" (Standard 1.16)? List two proactive steps a social worker must take when leaving an agency to ensure continuity of care and prevent abandonment.</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 7 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">7. Why does Standard 4.07 generally prohibit social workers from soliciting testimonials or reviews from current clients, especially those in vulnerable therapeutic relationships?</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 8 --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">8. Explain when a social worker’s private conduct (e.g., strong, aggressive political posts on social media) is considered an ethical violation under Standard 4.03.</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+            
+            <!-- Question 9 (New Question) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">9. Explain the concept of "professional impairment" (Standard 4.05) and describe the social worker's ethical responsibility when they recognize that a colleague is experiencing impairment.</p>
+                <textarea rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+        </section>
+
+        <!-- Part 2: Case Study Applications (Questions re-numbered starting from 10) --><section>
+            <h2 class="text-2xl font-bold text-green-700 mb-6 border-b pb-2">Part 2: Case Study Applications</h2>
+
+            <!-- Case Study 1 --><div class="mb-8 p-4 bg-green-50 rounded-lg case-study-header">
+                <h3 class="text-xl font-semibold text-green-800 mb-2">Case Study 1: The Rural Coach (Dual Relationships)</h3>
+                <p class="text-gray-700 text-sm italic">
+                    A social worker in a small, rural town provides outpatient therapy to Mr. Miller, a father dealing with recent unemployment and depression. The social worker's daughter plays on the local youth soccer team, which is coached by Mr. Miller. The social worker regularly attends practices and games, creating an unavoidable non-professional relationship.
+                </p>
+            </div>
+
+            <!-- Question 10 (Was 9) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">10. Analyze the primary ethical conflict present in this scenario. Outline the **three most important steps** the social worker should take to manage this unavoidable dual relationship while maintaining professional responsibility.</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 11 (Was 10) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">11. Consider the "Appearance of Conflict" (Standard 1.06). If the social worker attends the soccer tournament and Mr. Miller perceives her cheering for her daughter as "taking sides" against his coaching decisions, how does this damage the therapeutic alliance? How should the social worker proactively address this specific boundary crossing with the client?</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 12 (Was 11) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">12. If the social worker determines that her objectivity is too compromised to treat Mr. Miller effectively, but there are no other providers available (a common rural challenge), how does she balance the ethical requirement to avoid conflicts of interest with the ethical mandate to prevent "Abandonment" (Standard 1.16)?</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Case Study 2 --><div class="mb-8 mt-12 p-4 bg-emerald-50 rounded-lg case-study-header border-l-4 border-emerald-600">
+                <h3 class="text-xl font-semibold text-emerald-800 mb-2">Case Study 2: The Threat (Duty to Warn)</h3>
+                <p class="text-gray-700 text-sm italic">
+                    David, a long-term client with a history of anger management issues, arrives at a session highly agitated. He states, "My neighbor, Sarah, is the reason I got fired, and I am going to make her pay. I know where she works, and I am going to wait for her after she clocks out tomorrow and hurt her badly so she never bothers anyone again."
+                </p>
+            </div>
+
+            <!-- Question 13 (Was 12) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">13. Determine the social worker's immediate primary ethical and legal obligation. Justify your answer by referencing the specific components of the client's statement (Specific, Serious, Imminent) that trigger the duty to act.</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 14 (Was 13) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">14. Standard 1.07(c) states that when breaking confidentiality, social workers should disclose "the least amount of confidential information necessary." In this scenario, distinguish between what information you would share with the police versus what information you would share with Sarah (the potential victim).</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+            <!-- Question 15 (Was 14) --><div class="mb-6 question-block">
+                <p class="text-base font-semibold text-gray-900 mb-2">15. Assume the immediate crisis is managed (the police intervene). David returns to the clinic the following week. How should the social worker address the breach of trust with the client? Discuss the ethical considerations in deciding whether to continue treating David or to refer him to another provider.</p>
+                <textarea rows="6" class="w-full p-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"></textarea>
+            </div>
+
+        </section>
+
+        <footer class="mt-10 pt-4 border-t text-center text-gray-500 text-sm">
+            <p>NASW Code of Ethics Assessment - For Educational Purposes Only</p>
+        </footer>
+
+        <!-- Optional: Button to print the form --><div class="no-print mt-6 text-center">
+            <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-150 ease-in-out">
+                Print Assessment
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>
